@@ -9,7 +9,7 @@ A. Key Interaction
    Parallax: As user move the mouse, the large text blocks move slightly in opposite directions (data-speed), creating a matrix-3D depth effect.
    Magnetism: The background dots react to the cursor. Dots near the mouse swell in size, creating a wave-like ripple effect as you move across the grid.
 
-3. Depth of Field
+4. Depth of Field
    Focus: When hovering over a specific large word, that word scales up and remains sharp, while the other text blocks blur and fade out. This mimics a camera shifting focus.
 
 B. Key Technology
