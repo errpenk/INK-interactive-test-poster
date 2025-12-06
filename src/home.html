@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative Poster Archive</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <svg style="display: none;">
+        <defs>
+            <filter id="ink-bleed">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" />
+            </filter>
+        </defs>
+    </svg>
+
+    <div class="poster-wrapper" id="poster">
+        <div class="small-text meta-top-left" id="label-id"></div>
+        <div class="small-text meta-1" id="intro-text"></div>
+        <div class="small-text meta-2" id="date-text"></div>
+
+        <div class="big-text block-top" id="big-1" data-speed="2"></div>
+        <div class="big-text block-bottom" id="big-2" data-speed="-1.5"></div>
+        <div class="big-text block-side" id="big-3" data-speed="1"></div>
+
+        <div class="small-text meta-3" id="desc-text"></div>
+        <div class="small-text meta-4" id="credit-text"></div>
+    </div>
+
+    <div class="instruction">[ CLICK TO GENERATE NEW LAYOUT ]</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
