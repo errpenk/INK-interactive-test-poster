@@ -1,0 +1,60 @@
+/*
+  Separate the logic related to the "background dots".
+  This part of the code involves DOM calculations and collision detection,
+  and separating it allows main.js to focus on business logic.
+*/
+
+
+
+import { SETTINGS } from './config.js';
+
+const wrapper = document.getElementById('poster');
+
+export function createGrid() {
+    // Cleanup existing
+    const existingDots = document.querySelectorAll('.grid-dot');
+    existingDots.forEach(dot => dot.remove());
+
+    const width = wrapper.offsetWidth;
+    const height = wrapper.offsetHeight;
+    const cols = Math.floor(width / SETTINGS.gridSpacing);
+    const rows = Math.floor(height / SETTINGS.gridSpacing);
+    
+    // Create new dots
+    // Added buffer (+60) to fill edges completely
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < (cols * rows) + 60; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('grid-dot');
+        fragment.appendChild(dot);
+    }
+    wrapper.appendChild(fragment);
+}
+
+// Determines if dots are under text and hides them
+export function checkOverlaps() {
+    const dots = document.querySelectorAll('.grid-dot');
+    const texts = document.querySelectorAll('.small-text, .big-text'); // Added big-text to occlusion
+
+    // Use requestAnimationFrame to ensure DOM positions are settled
+    requestAnimationFrame(() => {
+        dots.forEach(dot => {
+            const dotRect = dot.getBoundingClientRect();
+            let overlap = false;
+
+            for (let text of texts) {
+                const textRect = text.getBoundingClientRect();
+                if (
+                    dotRect.left < textRect.right &&
+                    dotRect.right > textRect.left &&
+                    dotRect.top < textRect.bottom &&
+                    dotRect.bottom > textRect.top
+                ) {
+                    overlap = true;
+                    break; 
+                }
+            }
+            dot.style.opacity = overlap ? '0' : '1';
+        });
+    });
+}
