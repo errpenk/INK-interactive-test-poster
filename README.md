@@ -40,7 +40,7 @@ To simulate the imperfection of ink on paper, we inject an invisible SVG block c
 *   **Atmosphere:** CSS filters like `blur()`, `contrast()`, and `brightness()` are dynamically manipulated via JavaScript to create depth states.
 
 ### 3. Generative Logic
-*   **Randomization:** Customized utility functions (`utils.js`) pull from curated dictionaries of Nouns, Verbs, and Tech-Jargon (`config.js`) to assemble sentences that feel meaningful yet abstract.
+*   **Randomization:** Customized utility functions (`utils.js`) pull from dictionaries to assemble sentences.
 *   **Collision Detection:** After every generation, the system calculates the bounding boxes of text elements and hides any background grid dots that fall underneath, ensuring legible typography.
 
 ---
